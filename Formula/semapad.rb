@@ -3,8 +3,8 @@ class Semapad < Formula
 
   desc "Codex Micro pad + web dashboard for parallel Claude Desktop sessions"
   homepage "https://github.com/JeongJaeSoon/semapad"
-  url "https://github.com/JeongJaeSoon/semapad/archive/refs/tags/v0.1.0.tar.gz"
-  sha256 "8afc02bafef1808ec000e01c6a097784fe69d7a5d2759e959943aa5c9136ba1f"
+  url "https://github.com/JeongJaeSoon/semapad/archive/refs/tags/v0.1.1.tar.gz"
+  sha256 "e05a8daa705150c4a6400a6ea242cce60ac54453e225abead173b48a378f5965"
   license "MIT"
 
   depends_on :macos
