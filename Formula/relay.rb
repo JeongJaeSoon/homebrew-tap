@@ -22,8 +22,8 @@ class Relay < Formula
     run [opt_bin/"relay", "serve"]
     keep_alive successful_exit: false
     working_dir Dir.home
-    log_path var/"log/relay/stdout.log"
-    error_log_path var/"log/relay/stderr.log"
+    log_path "#{Dir.home}/Library/Logs/relay/stdout.log"
+    error_log_path "#{Dir.home}/Library/Logs/relay/stderr.log"
     environment_variables PATH:          "#{std_service_path_env}:#{Dir.home}/.local/bin",
                           RELAY_SERVICE: "1",
                           RELAY_BIN:     opt_bin/"relay"
