@@ -1,36 +1,32 @@
 class Relay < Formula
-  desc "Multi-agent orchestrator for Claude Code sessions with dashboard and CLI"   # <= 80 chars (brew audit)
+  desc "Multi-agent orchestrator for Claude Code sessions with dashboard and CLI"
   homepage "https://github.com/JeongJaeSoon/relay"
-  version "0.1.4"
   license "MIT"
 
-  on_arm do
-    url "https://github.com/JeongJaeSoon/relay/releases/download/v#{version}/relay-#{version}-darwin-arm64.tar.gz"
+  depends_on "git"
+  depends_on :macos
+
+  if Hardware::CPU.arm?
+    url "https://github.com/JeongJaeSoon/relay/releases/download/v0.1.4/relay-0.1.4-darwin-arm64.tar.gz"
     sha256 "6befe074f738f0a97fcd9761360be8b6b2941840c59bf4b9b49276a23c7d35b5"
-  end
-  on_intel do
-    url "https://github.com/JeongJaeSoon/relay/releases/download/v#{version}/relay-#{version}-darwin-x64.tar.gz"
+  else
+    url "https://github.com/JeongJaeSoon/relay/releases/download/v0.1.4/relay-0.1.4-darwin-x64.tar.gz"
     sha256 "b9039a38547c9e6c4f2c3deeb3597a9fdb577a0484c639ee24d5591e122b7062"
   end
-
-  depends_on :macos
-  depends_on "git"
 
   def install
     bin.install "relay"
   end
 
-  def post_install
-    (Pathname.new(Dir.home)/"Library/Logs/relay").mkpath   # launchd does not create log directories
-  end
-
   service do
     run [opt_bin/"relay", "serve"]
-    keep_alive successful_exit: false   # restart on crash only: serve() exits 0 to sleep after a failed boot of the same version
+    keep_alive successful_exit: false
     working_dir Dir.home
-    log_path "#{Dir.home}/Library/Logs/relay/stdout.log"
-    error_log_path "#{Dir.home}/Library/Logs/relay/stderr.log"
-    environment_variables PATH: "#{std_service_path_env}:#{Dir.home}/.local/bin", RELAY_SERVICE: "1", RELAY_BIN: opt_bin/"relay"   # RELAY_BIN: hooks/MCP point at the opt path, not the Cellar version
+    log_path var/"log/relay/stdout.log"
+    error_log_path var/"log/relay/stderr.log"
+    environment_variables PATH:          "#{std_service_path_env}:#{Dir.home}/.local/bin",
+                          RELAY_SERVICE: "1",
+                          RELAY_BIN:     opt_bin/"relay"
   end
 
   def caveats
