@@ -1,16 +1,16 @@
 class Relay < Formula
   desc "Multi-agent orchestrator for Claude Code sessions with dashboard and CLI"   # <= 80 chars (brew audit)
   homepage "https://github.com/JeongJaeSoon/relay"
-  version "0.1.3"
+  version "0.1.4"
   license "MIT"
 
   on_arm do
     url "https://github.com/JeongJaeSoon/relay/releases/download/v#{version}/relay-#{version}-darwin-arm64.tar.gz"
-    sha256 "d4b6f17d75bf6eb0263097b406978354591a3ab8697c406227feaf8d409a0a35"
+    sha256 "6befe074f738f0a97fcd9761360be8b6b2941840c59bf4b9b49276a23c7d35b5"
   end
   on_intel do
     url "https://github.com/JeongJaeSoon/relay/releases/download/v#{version}/relay-#{version}-darwin-x64.tar.gz"
-    sha256 "3a8e3a46493c85e2bcaae9d6ec9e62dd8ef05a1636750c3b15d71fd84e32e5af"
+    sha256 "b9039a38547c9e6c4f2c3deeb3597a9fdb577a0484c639ee24d5591e122b7062"
   end
 
   depends_on :macos
