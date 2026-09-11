@@ -1,0 +1,38 @@
+name: Validate Agent Guard formula
+
+on:
+  pull_request:
+    paths:
+      - Formula/agent-guard.rb
+      - .github/workflows/agent-guard-formula.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  formula:
+    runs-on: macos-latest
+    env:
+      CHECK_TAP: agentguard/check
+      HOMEBREW_NO_AUTO_UPDATE: "1"
+      HOMEBREW_NO_INSTALL_FROM_API: "1"
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+
+      - name: Install the committed candidate as a disposable local tap
+        run: |
+          brew tap "$CHECK_TAP" "$GITHUB_WORKSPACE"
+          cmp -s Formula/agent-guard.rb "$(brew --repository "$CHECK_TAP")/Formula/agent-guard.rb"
+
+      - name: Audit, install, and test the candidate formula
+        run: |
+          brew audit --formula "$CHECK_TAP/agent-guard"
+          brew install "$CHECK_TAP/agent-guard"
+          brew test "$CHECK_TAP/agent-guard"
+
+      - name: Remove the disposable formula and tap
+        if: always()
+        run: |
+          brew uninstall --force "$CHECK_TAP/agent-guard" || true
+          brew untap "$CHECK_TAP" || true
