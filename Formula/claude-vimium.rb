@@ -3,8 +3,8 @@
 class ClaudeVimium < Formula
   desc "Vimium-style keyboard hints for Claude Desktop"
   homepage "https://github.com/JeongJaeSoon/claude-vimium"
-  url "https://github.com/JeongJaeSoon/claude-vimium/archive/refs/tags/v0.3.0.tar.gz"
-  sha256 "bb539068fd1eb8f96d929ff1c33e7f223fcf93ac514803a2fd5c5620c2a6b17c"
+  url "https://github.com/JeongJaeSoon/claude-vimium/archive/refs/tags/v0.3.1.tar.gz"
+  sha256 "7214cd13593a6677fc8b9c0fedde8410a9eb3e7d60597e1c72482017a8bf4e04"
   license "MIT"
   head "https://github.com/JeongJaeSoon/claude-vimium.git", branch: "main"
 
