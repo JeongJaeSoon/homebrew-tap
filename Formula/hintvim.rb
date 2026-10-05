@@ -3,8 +3,8 @@
 class Hintvim < Formula
   desc "Vimium-style keyboard hints for Claude Desktop"
   homepage "https://github.com/JeongJaeSoon/hintvim"
-  url "https://github.com/JeongJaeSoon/hintvim/archive/refs/tags/v1.0.1.tar.gz"
-  sha256 "ae44860fbda2c22aa0f331cb2dc8f4b4736286d00dff7495df3049f5f9c93b42"
+  url "https://github.com/JeongJaeSoon/hintvim/archive/refs/tags/v1.0.2.tar.gz"
+  sha256 "ba9e83841454789c57d12354bf997f82f4f3a5f20e277d50e90c5e1c90606840"
   license "MIT"
   head "https://github.com/JeongJaeSoon/hintvim.git", branch: "main"
 
