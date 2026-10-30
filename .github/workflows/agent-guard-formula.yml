@@ -23,6 +23,7 @@ jobs:
       - name: Install the committed candidate as a disposable local tap
         run: |
           brew tap "$CHECK_TAP" "$GITHUB_WORKSPACE"
+          brew trust "$CHECK_TAP"
           cmp -s Formula/agent-guard.rb "$(brew --repository "$CHECK_TAP")/Formula/agent-guard.rb"
 
       - name: Audit, install, and test the candidate formula
