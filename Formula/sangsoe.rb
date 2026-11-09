@@ -21,9 +21,10 @@ class Sangsoe < Formula
         sangsoe install
         sangsoe doctor
       The Orca plugin stays pending until `sangsoe plugin approve` enables
-      it. Approve enables only a build whose pull request has a recorded
-      independent review with no open findings; otherwise it refuses and
-      prints the condition that failed.
+      it. Approve enables only a build whose pull request has an
+      independent review with no Act-on findings, recorded in this
+      machine's sangsoe store by `sangsoe review record`; otherwise it
+      refuses and prints the condition that failed.
       Before `brew uninstall sangsoe`, run `sangsoe uninstall`.
     EOS
   end
