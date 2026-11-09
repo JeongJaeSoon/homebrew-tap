@@ -1,8 +1,8 @@
 class Sangsoe < Formula
   desc "Orchestration for Claude Code sessions on Orca"
   homepage "https://github.com/JeongJaeSoon/sangsoe"
-  url "https://github.com/JeongJaeSoon/sangsoe/releases/download/v0.1.0-rc.1/sangsoe-0.1.0-rc.1.tar.gz"
-  sha256 "6e74a5b8e1118e337c5a5308b98c5b6b3adaccde3cb432df8fffac7bfc24a5bc"
+  url "https://github.com/JeongJaeSoon/sangsoe/releases/download/v0.1.0-rc.2/sangsoe-0.1.0-rc.2.tar.gz"
+  sha256 "1106cd2bb5aa6dd22e1ed670509ddd2918b31dad7eae0ff990d5c8cca702fd21"
 
   depends_on "node"
 
@@ -17,9 +17,10 @@ class Sangsoe < Formula
 
   def caveats
     <<~EOS
-      Register sangsoe's Claude Code plugin (and its Orca plugin, in builds
-      that ship one; this pre-release does not), then check it:
+      Register sangsoe with Claude Code and Orca, approve the Orca plugin
+      when `sangsoe install` says it waits for approval, then check it:
         sangsoe install
+        sangsoe plugin approve
         sangsoe doctor
       Before `brew uninstall sangsoe`, run `sangsoe uninstall`.
     EOS
