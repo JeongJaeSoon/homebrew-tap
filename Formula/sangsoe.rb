@@ -17,7 +17,8 @@ class Sangsoe < Formula
 
   def caveats
     <<~EOS
-      Register sangsoe with Claude Code and Orca, then check it:
+      Register sangsoe's Claude Code plugin (and its Orca plugin, in builds
+      that ship one; this pre-release does not), then check it:
         sangsoe install
         sangsoe doctor
       Before `brew uninstall sangsoe`, run `sangsoe uninstall`.
