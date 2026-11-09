@@ -17,11 +17,12 @@ class Sangsoe < Formula
 
   def caveats
     <<~EOS
-      Register sangsoe with Claude Code and Orca, approve the Orca plugin
-      when `sangsoe install` says it waits for approval, then check it:
+      Register sangsoe with Claude Code and Orca, then check it:
         sangsoe install
-        sangsoe plugin approve
         sangsoe doctor
+      The Orca plugin stays pending until it is approved. In this
+      pre-release `sangsoe plugin approve` refuses every build, because
+      the review record it checks is not shipped yet.
       Before `brew uninstall sangsoe`, run `sangsoe uninstall`.
     EOS
   end
