@@ -25,8 +25,10 @@ class Sangsoe < Formula
       independent review with no Act-on findings, recorded in this
       machine's sangsoe store by `sangsoe review record`; otherwise it
       refuses and prints the condition that failed.
-      Each upgrade installs a new folder, so record the new build's review
-      and run `sangsoe plugin approve` again, then `sangsoe doctor`.
+      Each upgrade installs a new folder, so after `brew upgrade` run
+      `sangsoe install`, record the new build's review with
+      `sangsoe review record`, run `sangsoe plugin approve` again, then
+      `sangsoe doctor`.
       Before `brew uninstall sangsoe`, run `sangsoe uninstall`.
     EOS
   end
