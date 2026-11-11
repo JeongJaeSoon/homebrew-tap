@@ -1,8 +1,8 @@
 class SangsoeRc < Formula
   desc "Orchestration for Claude Code sessions on Orca"
   homepage "https://github.com/JeongJaeSoon/sangsoe"
-  url "https://github.com/JeongJaeSoon/sangsoe/releases/download/v0.1.4-rc.1/sangsoe-0.1.4-rc.1.tar.gz"
-  sha256 "b54177ebfe1c3ced87d1a8bf915138b242acbb0952d8bb219a22f118cef96411"
+  url "https://github.com/JeongJaeSoon/sangsoe/releases/download/v0.1.4-rc.2/sangsoe-0.1.4-rc.2.tar.gz"
+  sha256 "281aedb03804cbcfe4dccf89ff2d165b004c787d789076bd16c73669d7fd7a94"
 
   depends_on "node"
 
@@ -31,7 +31,7 @@ class SangsoeRc < Formula
       `sangsoe install`, record the new build's review with
       `sangsoe review record`, run `sangsoe plugin approve` again, then
       `sangsoe doctor`.
-      Before `brew uninstall sangsoe`, run `sangsoe uninstall`.
+      Before `brew uninstall sangsoe-rc`, run `sangsoe uninstall`.
     EOS
   end
 
