@@ -1,8 +1,8 @@
 class Sangsoe < Formula
   desc "Orchestration for Claude Code sessions on Orca"
   homepage "https://github.com/JeongJaeSoon/sangsoe"
-  url "https://github.com/JeongJaeSoon/sangsoe/releases/download/v0.1.3/sangsoe-0.1.3.tar.gz"
-  sha256 "2923858709f05c83fd07986761acd8a9f869d692820cbfc5e4225951a7dd88bc"
+  url "https://github.com/JeongJaeSoon/sangsoe/releases/download/v0.1.4/sangsoe-0.1.4.tar.gz"
+  sha256 "2de076b8249ab209d61aaa1e493915c75a87dd00a9c938d936776823f188f250"
 
   depends_on "node"
 
