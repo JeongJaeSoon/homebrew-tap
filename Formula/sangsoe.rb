@@ -27,8 +27,9 @@ class Sangsoe < Formula
       independent review with no Act-on findings, recorded in this
       machine's sangsoe store by `sangsoe review record`; otherwise it
       refuses and prints the condition that failed. The review is recorded
-      by someone other than the session that wrote the pull request; that
-      session's record is refused.
+      by someone other than the session that wrote the pull request; under
+      Claude Code, a record made from a checkout on the pull request's
+      branch is refused.
       Each upgrade installs a new folder, so after `brew upgrade` run
       `sangsoe install`, have the new build's review recorded with
       `sangsoe review record`, run `sangsoe plugin approve` again, then
