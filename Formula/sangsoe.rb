@@ -1,10 +1,12 @@
 class Sangsoe < Formula
   desc "Orchestration for Claude Code sessions on Orca"
   homepage "https://github.com/JeongJaeSoon/sangsoe"
-  url "https://github.com/JeongJaeSoon/sangsoe/releases/download/v0.1.4/sangsoe-0.1.4.tar.gz"
-  sha256 "2de076b8249ab209d61aaa1e493915c75a87dd00a9c938d936776823f188f250"
+  url "https://github.com/JeongJaeSoon/sangsoe/releases/download/v0.1.5/sangsoe-0.1.5.tar.gz"
+  sha256 "1b568fb0ffe7fa4ac208482b017b1eda3786d2daae9babce283a7f3cd2144ea4"
 
   depends_on "node"
+
+  conflicts_with "sangsoe-rc", because: "both install the sangsoe command"
 
   def install
     # Dir["*"] skips dot folders; .claude-plugin holds the marketplace file `sangsoe install` registers.
@@ -24,9 +26,12 @@ class Sangsoe < Formula
       it. Approve enables only a build whose pull request has an
       independent review with no Act-on findings, recorded in this
       machine's sangsoe store by `sangsoe review record`; otherwise it
-      refuses and prints the condition that failed.
+      refuses and prints the condition that failed. The review is recorded
+      by someone other than the session that wrote the pull request; under
+      Claude Code, a record made from a checkout on the pull request's
+      branch is refused.
       Each upgrade installs a new folder, so after `brew upgrade` run
-      `sangsoe install`, record the new build's review with
+      `sangsoe install`, have the new build's review recorded with
       `sangsoe review record`, run `sangsoe plugin approve` again, then
       `sangsoe doctor`.
       Before `brew uninstall sangsoe`, run `sangsoe uninstall`.
