@@ -1,11 +1,8 @@
 class SangsoeRc < Formula
   desc "Orchestration for Claude Code sessions on Orca"
   homepage "https://github.com/JeongJaeSoon/sangsoe"
-  url "https://github.com/JeongJaeSoon/sangsoe/releases/download/v0.1.5-rc.2/sangsoe-0.1.5-rc.2.tar.gz"
-  sha256 "d3aa8c5c5dc045a8bd7d4e6767d20f07643660ac333c00bde6ed843c6ce245f4"
-
-  # Kept, disabled, so the stable formula's conflicts_with "sangsoe-rc" can still load it.
-  disable! date: "2026-11-12", because: "is replaced by the stable release", replacement_formula: "sangsoe"
+  url "https://github.com/JeongJaeSoon/sangsoe/releases/download/v0.1.6-rc.1/sangsoe-0.1.6-rc.1.tar.gz"
+  sha256 "82453c762f9e3f3a92c2df7ebdd5dd6ef27a4c85258825413f6ff8ea2ae6cb3c"
 
   depends_on "node"
 
