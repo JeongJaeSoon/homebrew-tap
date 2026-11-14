@@ -1,8 +1,8 @@
 class AgentGuard < Formula
   desc "Deterministic secret guardrails for AI coding agents"
   homepage "https://github.com/JeongJaeSoon/agent-guard"
-  url "https://github.com/JeongJaeSoon/agent-guard/releases/download/v3.8.2/agent-guard-3.8.2.tar.gz"
-  sha256 "45024ce07271fd24cffc19f60aab520775245134ab105e16d7a5e1c73d4789c6"
+  url "https://github.com/JeongJaeSoon/agent-guard/releases/download/v3.9.0/agent-guard-3.9.0.tar.gz"
+  sha256 "eaadcc7e586ec35cd29ebd7fd4535c94130398df9bb97b1fea6c9032a303d1c3"
   license "MIT"
 
   depends_on "git"
@@ -19,8 +19,20 @@ class AgentGuard < Formula
     SH
   end
 
+  def caveats
+    on_macos do
+      on_intel do
+        <<~EOS
+          Intel Mac (x86_64) support ended after Agent Guard v3.8.2.
+          Later releases ship no Intel native helper and are not tested on Intel;
+          redaction uses the shell/jq fallback.
+        EOS
+      end
+    end
+  end
+
   test do
-    assert_match "agent-guard 3.8.2", shell_output("#{bin}/agent-guard version")
+    assert_match "agent-guard 3.9.0", shell_output("#{bin}/agent-guard version")
     system bin/"agent-guard", "check"
     system bin/"agent-guard", "smoke-test"
   end
