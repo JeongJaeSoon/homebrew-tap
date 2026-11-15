@@ -34,6 +34,12 @@ class Sangsoe < Formula
       `sangsoe install`, have the new build's review recorded with
       `sangsoe review record`, run `sangsoe plugin approve` again, then
       `sangsoe doctor`.
+      When doctor's `permissions` row warns after an upgrade, run
+      `sangsoe install --permissions`: it adds only the missing rules.
+      After an upgrade, restart each running Claude Code session in the
+      same directory with `claude --continue` plus the flags it was
+      started with: a running session keeps the MCP server and the
+      plugin text it loaded.
       Before `brew uninstall sangsoe`, run `sangsoe uninstall`.
     EOS
   end
