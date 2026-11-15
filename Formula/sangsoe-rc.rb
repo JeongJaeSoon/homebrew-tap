@@ -4,6 +4,9 @@ class SangsoeRc < Formula
   url "https://github.com/JeongJaeSoon/sangsoe/releases/download/v0.1.7-rc.1/sangsoe-0.1.7-rc.1.tar.gz"
   sha256 "d08fb8a4689a20fea53b516f994fdd1927c4cace0386f9298b61c5c4406e1e3b"
 
+  # Kept, disabled, so the stable formula's conflicts_with "sangsoe-rc" can still load it.
+  disable! date: "2026-11-14", because: "is replaced by the stable release", replacement_formula: "sangsoe"
+
   depends_on "node"
 
   conflicts_with "sangsoe", because: "both install the sangsoe command"
