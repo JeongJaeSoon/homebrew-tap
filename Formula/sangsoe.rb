@@ -1,8 +1,8 @@
 class Sangsoe < Formula
   desc "Orchestration for Claude Code sessions on Orca"
   homepage "https://github.com/JeongJaeSoon/sangsoe"
-  url "https://github.com/JeongJaeSoon/sangsoe/releases/download/v0.1.10/sangsoe-0.1.10.tar.gz"
-  sha256 "d9618ca9a9ef4265a8e66b56533d729ed14c0f0aa3de45a9fb2865c43bd6219a"
+  url "https://github.com/JeongJaeSoon/sangsoe/releases/download/v0.1.13/sangsoe-0.1.13.tar.gz"
+  sha256 "cd0fba2e1405a8e01d411d56d6b421f3c5e888e04dde5c6fc4c297589af5933a"
 
   depends_on "node"
 
@@ -34,6 +34,12 @@ class Sangsoe < Formula
       `sangsoe install`, have the new build's review recorded with
       `sangsoe review record`, run `sangsoe plugin approve` again, then
       `sangsoe doctor`.
+      When doctor's `permissions` row warns after an upgrade, run
+      `sangsoe install --permissions`: it adds only the missing rules.
+      After an upgrade, restart each running Claude Code session in the
+      same directory with `claude --continue` plus the flags it was
+      started with: a running session keeps the MCP server and the
+      plugin text it loaded.
       Before `brew uninstall sangsoe`, run `sangsoe uninstall`.
     EOS
   end
