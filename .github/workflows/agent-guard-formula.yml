@@ -20,28 +20,32 @@ jobs:
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
 
+      # Record what the runner image ships before anything is added to it, so
+      # a failure can be read against the Homebrew version and the taps that
+      # were present.
+      - name: Record the Homebrew version and taps
+        run: |
+          brew --version
+          brew config
+          brew tap
+
       - name: Install the committed candidate as a disposable local tap
         run: |
           brew tap "$CHECK_TAP" "$GITHUB_WORKSPACE"
           brew trust "$CHECK_TAP"
           cmp -s Formula/agent-guard.rb "$(brew --repository "$CHECK_TAP")/Formula/agent-guard.rb"
 
-      # The audit needs homebrew/core as a Git tap (HOMEBREW_NO_INSTALL_FROM_API)
-      # and the runner image has none. When `brew audit` taps it by itself,
-      # the same process can then fail to find the formula's core
-      # dependencies ("Can't find dependency 'git'", seen with Homebrew
-      # 7.0.14). Tap it in a step of its own, so the audit starts with the
-      # core tap present.
+      # With HOMEBREW_NO_INSTALL_FROM_API set, the audit resolves the formula's
+      # dependencies from a homebrew/core Git tap, and the runner images seen
+      # so far start without one. When `brew audit` taps it by itself, the same
+      # process can then fail to find those dependencies ("Can't find
+      # dependency 'git'", seen with Homebrew 7.0.14 on image
+      # macos-26-arm64 20261117.0516.1). Tap it in a step of its own, so the
+      # audit starts with the core tap present. Without
+      # HOMEBREW_NO_INSTALL_FROM_API, `brew tap homebrew/core` refuses to run,
+      # so keep that variable set while this step exists.
       - name: Tap homebrew/core before the audit
         run: brew tap homebrew/core
-
-      # Record what the runner has before the audit, so a failure can be read
-      # against the Homebrew version and the taps that were present.
-      - name: Record the Homebrew version and taps
-        run: |
-          brew --version
-          brew config
-          brew tap
 
       - name: Audit, install, and test the candidate formula
         run: |
