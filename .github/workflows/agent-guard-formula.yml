@@ -26,7 +26,14 @@ jobs:
           brew trust "$CHECK_TAP"
           cmp -s Formula/agent-guard.rb "$(brew --repository "$CHECK_TAP")/Formula/agent-guard.rb"
 
-      # The audit needs homebrew/core as a Git tap (HOMEBREW_NO_INSTALL_FROM_API).
+      # The audit needs homebrew/core as a Git tap (HOMEBREW_NO_INSTALL_FROM_API)
+      # and the runner image no longer ships one. When `brew audit` taps it by
+      # itself, the same process then fails to find the formula's core
+      # dependencies ("Can't find dependency 'git'", Homebrew 7.0.14). Tap it
+      # in a step of its own, so the audit starts with the core tap present.
+      - name: Tap homebrew/core before the audit
+        run: brew tap homebrew/core
+
       # Record what the runner has before the audit, so a failure can be read
       # against the Homebrew version and the taps that were present.
       - name: Record the Homebrew version and taps
