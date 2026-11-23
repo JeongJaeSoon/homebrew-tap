@@ -1,8 +1,8 @@
 class AgentGuard < Formula
   desc "Deterministic secret guardrails for AI coding agents"
   homepage "https://github.com/JeongJaeSoon/agent-guard"
-  url "https://github.com/JeongJaeSoon/agent-guard/releases/download/v3.13.1/agent-guard-3.13.1.tar.gz"
-  sha256 "923e82b60afa4c06eafa77efc9142b18a6f0659ddfb87de03a6e3529de9a51b4"
+  url "https://github.com/JeongJaeSoon/agent-guard/releases/download/v3.13.2/agent-guard-3.13.2.tar.gz"
+  sha256 "7cc5776b123e39be41e0694faa9aef9686aa026cfb702d1c34c7ee1f0cab43d5"
   license "MIT"
 
   depends_on "git"
@@ -32,7 +32,7 @@ class AgentGuard < Formula
   end
 
   test do
-    assert_match "agent-guard 3.13.1", shell_output("#{bin}/agent-guard version")
+    assert_match "agent-guard 3.13.2", shell_output("#{bin}/agent-guard version")
     system bin/"agent-guard", "check"
     system bin/"agent-guard", "smoke-test"
   end
